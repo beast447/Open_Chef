@@ -1,8 +1,56 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Open Chef
+
+🍳 A smart recipe generator that creates delicious recipes based on the ingredients you have on hand!
+
+## Overview
+
+Open Chef is an intelligent web application that helps you discover creative recipes using the ingredients already in your kitchen. Simply enter the ingredients you have available, and Open Chef will generate personalized recipe suggestions for you to try.
+
+## Features
+
+✨ **Ingredient-Based Recipe Generation** - Get recipe ideas based on what you have
+- Enter multiple ingredients and receive curated recipe suggestions
+- Discover new dishes with your existing pantry items
+- Save time on meal planning
+
+🎨 **Beautiful User Interface** - Clean, intuitive design for easy navigation
+- Modern and responsive design
+- Fast, interactive experience
+
+⚡ **Built with Modern Technology**
+- Next.js framework for optimal performance
+- TypeScript for type safety and better development experience
+- Tailwind CSS for styling
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js (v16 or higher)
+- npm, yarn, pnpm, or bun package manager
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/beast447/Open_Chef.git
+cd Open_Chef
+```
+
+2. Install dependencies:
+```bash
+npm install
+# or
+yarn install
+# or
+pnpm install
+# or
+bun install
+```
+
+### Development
+
+Run the development server:
 
 ```bash
 npm run dev
@@ -14,23 +62,72 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the application.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Editing
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+You can start editing the application by modifying `app/page.tsx`. The page will auto-update as you edit the file with Next.js's fast refresh feature.
+
+## Project Structure
+
+```
+Open_Chef/
+├── app/              # Next.js app directory
+├── public/           # Static assets
+├── package.json      # Project dependencies
+├── tsconfig.json     # TypeScript configuration
+├── next.config.ts    # Next.js configuration
+└── README.md         # This file
+```
+
+## Tech Stack
+
+- **Frontend**: Next.js 14+, TypeScript, React
+- **Styling**: Tailwind CSS
+- **Package Manager**: npm/yarn/pnpm/bun
+- **Linting**: ESLint
+
+## Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
+
+## Deployment
+
+### Deploy on Vercel
+
+The easiest way to deploy Open Chef is to use the [Vercel Platform](https://vercel.com), created by the makers of Next.js.
+
+1. Push your code to GitHub
+2. Connect your repository to Vercel
+3. Vercel will automatically detect it's a Next.js app and configure it
+4. Your app will be deployed!
+
+For more details, check out the [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying).
 
 ## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+To learn more about the technologies used in this project:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- [Next.js Documentation](https://nextjs.org/docs) - Learn about Next.js features and API
+- [React Documentation](https://react.dev) - Learn about React
+- [TypeScript Documentation](https://www.typescriptlang.org/docs/) - Learn TypeScript
+- [Tailwind CSS Documentation](https://tailwindcss.com/docs) - Learn Tailwind CSS
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Contributing
 
-## Deploy on Vercel
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## License
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is open source and available under the MIT License.
+
+## Support
+
+If you have any questions or feedback, please open an issue on the [GitHub repository](https://github.com/beast447/Open_Chef/issues).
+
+---
+
+Made with ❤️ by [beast447](https://github.com/beast447)
