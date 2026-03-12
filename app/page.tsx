@@ -61,7 +61,7 @@ export default function Home() {
       
       {ingredients.length >= 3 && <button
         onClick={getRecipe}
-        className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-colors"
+        className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
       >
         {recipe ? "New Recipe" : "Get Recipe"}
       </button>}
