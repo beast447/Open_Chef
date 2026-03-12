@@ -8,7 +8,7 @@ import Recipe from "./components/Recipe";
 export default function Home() {
   const [ingredients, setIngredients] = useState<string[]>([]);
   const [recipe, setRecipe] = useState<string | null>(null);
-
+  const [loading, setLoading] = useState(false);
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -24,7 +24,11 @@ export default function Home() {
   }
 
   async function getRecipe() {
-    const res = await fetch("/api", {
+    setLoading(true);
+    setRecipe("Cooking up something delicious...");
+    try {
+
+    const response = await fetch("/api", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -32,14 +36,43 @@ export default function Home() {
       body: JSON.stringify({ ingredients }),
     });
 
-    const data = await res.json();
-    setRecipe(data.recipe);
+    if(!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const reader = response.body?.getReader();
+    if (!reader) throw new Error("no body stream");
+    const decoder = new TextDecoder();
+
+    let result = "";
+
+    while (true) {
+      const { done, value } = await reader.read();
+
+      if (done) break;
+        
+      const chunk = decoder.decode(value);
+      result += chunk;
+
+      setRecipe(result);
+    }
+  } catch (error) {
+    console.error("Error fetching recipe:", error);
+    setRecipe("An error occurred while fetching the recipe. Please try again.");
+  } finally {
+    setLoading(false);
   }
+}
+
+function newRecipe() {
+  setRecipe(null);
+  setIngredients([]);
+}
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center gap-4 mt-4">
       <div className="flex items-center gap-1 ">
-        <ChefHat size={48} className="text-red-500" />
+        <ChefHat size={48} className={`text-red-500 ${loading ? "animate-spin" : ""}`} />
         <h1 className="text-2xl font-bold">Open Chef</h1>
       </div>
 
@@ -50,6 +83,7 @@ export default function Home() {
           name="ingredients"
           type="text"
           placeholder="Apples, Chicken, Bacon..."
+          maxLength={50}
         />
       </form>
       
@@ -60,8 +94,10 @@ export default function Home() {
       />}
       
       {ingredients.length >= 3 && <button
-        onClick={getRecipe}
-        className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
+        onClick={!recipe ? getRecipe : newRecipe}
+        className={`bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 ${recipe ? "bg-green-500 hover:bg-green-600" : ""} 
+        ${loading ? "cursor-not-allowed opacity-50" : ""}  `}
+        disabled={loading}
       >
         {recipe ? "New Recipe" : "Get Recipe"}
       </button>}
