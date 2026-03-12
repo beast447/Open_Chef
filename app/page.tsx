@@ -52,17 +52,20 @@ export default function Home() {
           placeholder="Apples, Chicken, Bacon..."
         />
       </form>
+      
       {ingredients.length < 1 && <p className="text-gray-500">Add at least 3 ingredients to get a recipe</p>}
       {ingredients.length > 0 && 
       <IngredientsList 
       ingredients={ingredients}
       />}
+      
       {ingredients.length >= 3 && <button
         onClick={getRecipe}
         className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-colors"
       >
         {recipe ? "New Recipe" : "Get Recipe"}
       </button>}
+      
       {recipe && <Recipe 
       recipe={recipe}/>}
     </main>
