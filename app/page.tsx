@@ -20,9 +20,22 @@ export default function Home() {
     event.currentTarget.reset();
   }
 
+  async function getRecipe() {
+    const res = await fetch("/api", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ ingredients }),
+    });
+
+    const data = await res.json();
+    console.log(data);
+  }
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-24 gap-4">
-      <div className="flex items-center gap-1 mr-auto">
+    <main className="flex min-h-screen flex-col items-center justify-center gap-4">
+      <div className="flex items-center gap-1 ">
         <ChefHat size={48} className="text-red-500" />
         <h1 className="text-2xl font-bold">Open Chef</h1>
       </div>
@@ -36,7 +49,8 @@ export default function Home() {
           placeholder="Apples, Chicken, Bacon..."
         />
       </form>
-      {ingredients.length > 0 && <IngredientsList 
+      {ingredients.length > 0 && 
+      <IngredientsList 
       ingredients={ingredients}
       />}
     </main>
